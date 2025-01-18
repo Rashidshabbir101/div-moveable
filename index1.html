@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resizable and Editable Container</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+    }
+    .container {
+      width: 300px;
+      height: 200px;
+      border: 2px solid #3498db;
+      border-radius: 8px;
+      background-color: #ffffff;
+      padding: 10px;
+      resize: both;
+      overflow: auto;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .container:focus {
+      outline: none;
+      border-color: #2ecc71;
+    }
+    .container::placeholder {
+      color: #bdc3c7;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div
+    class="container"
+    contenteditable="true"
+    spellcheck="false"
+  >
+    Type your text here...
+  </div>
+
+  <script>
+    const container = document.querySelector('.container');
+
+    // Optional: Clear placeholder text on focus
+    container.addEventListener('focus', () => {
+      if (container.textContent.trim() === 'Type your text here...') {
+        container.textContent = '';
+      }
+    });
+
+    // Optional: Add placeholder text back if empty on blur
+    container.addEventListener('blur', () => {
+      if (container.textContent.trim() === '') {
+        container.textContent = 'Type your text here...';
+      }
+    });
+  </script>
+</body>
+</html>
