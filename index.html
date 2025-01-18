@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Follow Cursor Div</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+    }
+    #draggable {
+      width: 150px;
+      height: 150px;
+      background-color: #3498db;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      border-radius: 8px;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="draggable">Follow Me</div>
+
+  <script>
+    const draggable = document.getElementById('draggable');
+
+    // Function to update the position of the div to follow the cursor
+    document.addEventListener('mousemove', (e) => {
+      draggable.style.left = `${e.clientX - draggable.offsetWidth / 2}px`;
+      draggable.style.top = `${e.clientY - draggable.offsetHeight / 2}px`;
+    });
+  </script>
+</body>
+</html>
